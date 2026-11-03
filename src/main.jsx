@@ -1,17 +1,16 @@
-import { createRoot } from "react-dom/client";
-import "./index.css";
-import App from "./App.jsx";
-import Layout from "./layout/Layout";
 
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router";
 import { AuthProvider } from "./auth/AuthContext";
-import { PageProvider } from "./layout/PageContext";
+import App from "./App";
 
-createRoot(document.getElementById("root")).render(
-  <AuthProvider>
-    <PageProvider>
-      <Layout>
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <AuthProvider>
         <App />
-      </Layout>
-    </PageProvider>
-  </AuthProvider>,
+      </AuthProvider>
+    </BrowserRouter>
+  </React.StrictMode>
 );

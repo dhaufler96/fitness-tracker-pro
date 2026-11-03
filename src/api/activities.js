@@ -1,4 +1,4 @@
-const API = import.meta.env.VITE_API;
+export const API = "https://fitnestrac-kr.herokuapp.com/api";
 
 /** Fetches an array of activities from the API. */
 export async function getActivities() {
@@ -54,4 +54,10 @@ export async function deleteActivity(token, id) {
     const result = await response.json();
     throw Error(result.message);
   }
+}
+
+export async function getActivity(id) {
+  const response = await fetch(API + "/activities/" + id);
+  if (!response.ok) throw Error("Could not load activity");
+  return response.json();
 }
